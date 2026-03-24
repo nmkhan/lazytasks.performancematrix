@@ -216,7 +216,7 @@ class Lazytask_PerformanceController extends Lazytask_Performance_DefaultControl
         $rank = 1;
 
         // Colors for leaderboard badges based on rank
-        $colors = ['#F59E0B', '#94A3B8', '#B45309', 'var(--text-light)'];
+        $colors = ['#F59E0B', '#94A3B8', '#B45309', '#64748B'];
 
         if ($leaderboard_data) {
             foreach ($leaderboard_data as $user) {
@@ -241,7 +241,7 @@ class Lazytask_PerformanceController extends Lazytask_Performance_DefaultControl
                     'role' => 'Member', // Could query wp_pms_user_has_roles if needed
                     'points' => (int) $user['total_points'],
                     'initials' => $initials,
-                    'bg' => $rank <= 2 ? 'var(--orange)' : 'var(--teal)',
+                    'bg' => $rank <= 2 ? '#E8640E' : '#18313B',
                     'rank' => $rank,
                     'color' => isset($colors[$rank - 1]) ? $colors[$rank - 1] : $colors[3],
                     'efficiency' => $user_efficiency
