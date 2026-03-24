@@ -45,13 +45,16 @@ class Lazytask_Performance_Admin {
 			true
 		);
 
-		if ( file_exists( LAZYTASK_PERFORMANCE_PATH . 'admin/frontend/build/index.css' ) ) {
-			wp_enqueue_style(
-				'lazytasks-performance-style',
-				LAZYTASK_PERFORMANCE_URL . 'admin/frontend/build/index.css',
-				array(),
-				$asset['version']
-			);
+		foreach ( array( 'style-index.css', 'index.css' ) as $css_file ) {
+			if ( file_exists( LAZYTASK_PERFORMANCE_PATH . 'admin/frontend/build/' . $css_file ) ) {
+				wp_enqueue_style(
+					'lazytasks-performance-style',
+					LAZYTASK_PERFORMANCE_URL . 'admin/frontend/build/' . $css_file,
+					array(),
+					$asset['version']
+				);
+				break;
+			}
 		}
 
 		wp_localize_script( 'lazytasks-performance-script', 'appLocalizerPerformance', array(

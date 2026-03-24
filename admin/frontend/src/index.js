@@ -1,4 +1,5 @@
 import React from 'react';
+import './style.css';
 import { render } from '@wordpress/element';
 import App from './App';
 
