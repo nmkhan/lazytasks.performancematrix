@@ -18,6 +18,7 @@ class Performance_DBMigrator {
 
         self::seed_default_rules();
         self::seed_performance_permissions();
+        self::fix_permission_groups();
     }
 
     private static function seed_default_rules() {
@@ -69,16 +70,16 @@ class Performance_DBMigrator {
                 $permissions_table,
                 [
                     'name'                => $perm_manage_rules,
-                    'description'         => 'Change points or disable performance rules.',
+                    'description'         => 'Manage Performance Scoring Rules',
                     'permission_type'     => 'global',
-                    'permission_group'    => 'AddOn Permissions',
-                    'permission_sub_group' => 'Performance',
+                    'permission_group'    => 'Setting',
+                    'permission_sub_group' => 'Others',
                     'order_id'            => 1,
                 ],
                 ['%s', '%s', '%s', '%s', '%s', '%d']
             );
             $permission_id = (int) $wpdb->insert_id;
-            
+
             // Assign to global admins/owners
             $roles = $wpdb->get_results("SELECT id, slug FROM " . LAZYTASK_TABLE_PREFIX . "roles WHERE slug IN ('admin', 'owner')");
             foreach ($roles as $role) {
@@ -86,7 +87,7 @@ class Performance_DBMigrator {
             }
         }
 
-        // 2. View Performance Access (Project - Everyone)
+        // 2. Performance Matrix nav tab access (Global - Everyone)
         $perm_access = 'performance-access';
         $exists2 = $wpdb->get_var($wpdb->prepare("SELECT COUNT(*) FROM {$permissions_table} WHERE name = %s", $perm_access));
         if (!$exists2) {
@@ -94,21 +95,55 @@ class Performance_DBMigrator {
                 $permissions_table,
                 [
                     'name'                => $perm_access,
-                    'description'         => 'View performance scatterplot and project score leaderboards.',
-                    'permission_type'     => 'project',
-                    'permission_group'    => 'AddOn Permissions',
-                    'permission_sub_group' => 'Performance',
-                    'order_id'            => 2,
+                    'description'         => 'Performance Matrix',
+                    'permission_type'     => 'global',
+                    'permission_group'    => 'Setting',
+                    'permission_sub_group' => 'Main Settings Menu',
+                    'order_id'            => 50,
                 ],
                 ['%s', '%s', '%s', '%s', '%s', '%d']
             );
             $permission_id2 = (int) $wpdb->insert_id;
-            
-            // Assign to all default project roles
+
+            // Assign to all roles
             $roles = $wpdb->get_results("SELECT id FROM " . LAZYTASK_TABLE_PREFIX . "roles");
             foreach ($roles as $role) {
                 $wpdb->insert($role_has_permissions_table, ['role_id' => $role->id, 'permission_id' => $permission_id2], ['%d', '%d']);
             }
         }
+    }
+
+    // Migration 1.0.1 — move performance permissions out of AddOn Permissions group
+    private static function fix_permission_groups() {
+        global $wpdb;
+        $permissions_table = LAZYTASK_TABLE_PREFIX . 'permissions';
+
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
+        $wpdb->update(
+            $permissions_table,
+            [
+                'permission_group'     => 'Setting',
+                'permission_sub_group' => 'Main Settings Menu',
+                'description'          => 'Performance Matrix',
+                'permission_type'      => 'global',
+                'order_id'             => 50,
+            ],
+            [ 'name' => 'performance-access' ],
+            [ '%s', '%s', '%s', '%s', '%d' ],
+            [ '%s' ]
+        );
+
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
+        $wpdb->update(
+            $permissions_table,
+            [
+                'permission_group'     => 'Setting',
+                'permission_sub_group' => 'Others',
+                'description'          => 'Manage Performance Scoring Rules',
+            ],
+            [ 'name' => 'performance-manage-rules' ],
+            [ '%s', '%s', '%s' ],
+            [ '%s' ]
+        );
     }
 }

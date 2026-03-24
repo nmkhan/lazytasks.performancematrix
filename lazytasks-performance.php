@@ -33,7 +33,7 @@ if ( ! defined( 'WPINC' ) ) {
  * Define constants
  */
 define( 'LAZYTASK_PERFORMANCE_VERSION', '1.0.0' );
-define( 'LAZYTASK_PERFORMANCE_DB_VERSION', '1.0.0' );
+define( 'LAZYTASK_PERFORMANCE_DB_VERSION', '1.0.1' );
 define( 'LAZYTASK_PERFORMANCE_PATH', plugin_dir_path( __FILE__ ) );
 define( 'LAZYTASK_PERFORMANCE_URL', plugin_dir_url( __FILE__ ) );
 
