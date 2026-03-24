@@ -1,0 +1,19 @@
+{
+  "name": "lazytasks/performance",
+  "description": "Gamification and Scorer Addon for LazyTasks",
+  "type": "wordpress-plugin",
+  "authors": [
+    {
+      "name": "LazyTasks",
+      "email": "support@lazytasks.com"
+    }
+  ],
+  "require": {
+    "php": ">=7.4"
+  },
+  "autoload": {
+    "psr-4": {
+      "Lazytask_Performance\\": "src/"
+    }
+  }
+}
