@@ -140,21 +140,25 @@ const PerformanceDashboardInner = () => {
                                         const size = 30 + ((user.points / maxPoints) * 20); // Scale size from 30px to 50px
                                         
                                         return (
-                                            <div 
-                                                key={`scatter-${user.id}`} 
-                                                className="bubble b-user" 
+                                            <div
+                                                key={`scatter-${user.id}`}
+                                                className="bubble b-user"
                                                 style={{
-                                                    width: `${size}px`, 
-                                                    height: `${size}px`, 
-                                                    left: `${left}%`, 
+                                                    width: `${size}px`,
+                                                    height: `${size}px`,
+                                                    left: `${left}%`,
                                                     top: `${top}%`,
                                                     background: user.bg,
                                                     border: `2px solid ${user.color || '#fff'}`,
                                                     color: '#fff'
-                                                }} 
-                                                title={`${user.name} - ${user.points} pts (${user.efficiency.ratio}% Completion)`}
+                                                }}
                                             >
                                                 {user.initials}
+                                                <div className="bubble-tooltip">
+                                                    <div className="bt-name">{user.name}</div>
+                                                    <div className="bt-stat">{user.points.toLocaleString()} pts</div>
+                                                    <div className="bt-stat">{user.efficiency.ratio}% Efficiency</div>
+                                                </div>
                                             </div>
                                         );
                                     })}

@@ -275,7 +275,7 @@
     background: linear-gradient(135deg, #f8fafc 0%, var(--pm-teal-lt) 100%);
     border-radius: 8px;
     border: 1px solid var(--pm-border);
-    overflow: hidden;
+    overflow: visible;
 }
 
 .scatter-axis-y {
@@ -325,6 +325,49 @@
 
 .b-user {
     color: #fff;
+}
+
+/* ── Bubble Tooltip ─────────────────────────────────────────── */
+.bubble-tooltip {
+    display: none;
+    position: absolute;
+    bottom: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: #1A2733;
+    color: #fff;
+    border-radius: 6px;
+    padding: 8px 12px;
+    white-space: nowrap;
+    pointer-events: none;
+    z-index: 100;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+}
+
+.bubble-tooltip::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 5px solid transparent;
+    border-top-color: #1A2733;
+}
+
+.bubble:hover .bubble-tooltip {
+    display: block;
+}
+
+.bt-name {
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.bt-stat {
+    font-size: 12px;
+    opacity: 0.85;
+    line-height: 1.5;
 }
 
 /* ── Leaderboard ────────────────────────────────────────────── */
