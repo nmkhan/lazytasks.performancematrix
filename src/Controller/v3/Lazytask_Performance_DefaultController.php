@@ -134,6 +134,14 @@ class Lazytask_Performance_DefaultController {
 	}
 
 	/**
+	 * Return the global wpdb instance.
+	 */
+	protected function get_wpdb() {
+		global $wpdb;
+		return $wpdb;
+	}
+
+	/**
 	 * Extract the authenticated user ID from the request's JWT.
 	 */
 	protected function get_user_id_from_request( WP_REST_Request $request ) {
