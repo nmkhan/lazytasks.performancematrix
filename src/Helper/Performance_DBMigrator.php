@@ -19,6 +19,7 @@ class Performance_DBMigrator {
         self::seed_default_rules();
         self::seed_performance_permissions();
         self::fix_permission_groups();
+        self::move_settings_permissions_to_side_menu();
     }
 
     private static function seed_default_rules() {
@@ -144,6 +145,36 @@ class Performance_DBMigrator {
             [ 'name' => 'performance-manage-rules' ],
             [ '%s', '%s', '%s' ],
             [ '%s' ]
+        );
+    }
+
+    /**
+     * Move both performance permissions from "Main Settings Menu" / "Others"
+     * to "Side Menu (General)" to match the new Settings V3 layout where
+     * addon settings live under General → Extensions sidebar.
+     *
+     * Idempotent — updates are no-ops if the value already matches.
+     */
+    private static function move_settings_permissions_to_side_menu() {
+        global $wpdb;
+        $permissions_table = LAZYTASK_TABLE_PREFIX . 'permissions';
+
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
+        $wpdb->update(
+            $permissions_table,
+            [ 'permission_sub_group' => 'Side Menu (General)' ],
+            [ 'name' => 'performance-access', 'permission_type' => 'global' ],
+            [ '%s' ],
+            [ '%s', '%s' ]
+        );
+
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
+        $wpdb->update(
+            $permissions_table,
+            [ 'permission_sub_group' => 'Side Menu (General)' ],
+            [ 'name' => 'performance-manage-rules', 'permission_type' => 'global' ],
+            [ '%s' ],
+            [ '%s', '%s' ]
         );
     }
 }
