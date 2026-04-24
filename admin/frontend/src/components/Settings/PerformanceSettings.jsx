@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { translate } from '../../utils/i18n';
 import { Provider, useDispatch, useSelector } from 'react-redux';
 import { fetchRules, updateRules, syncBacklog } from '../../store/performanceSlice';
 import store from '../../store';
@@ -143,15 +144,15 @@ const PerformanceSettingsInner = () => {
         dispatch(updateRules({ rules: localRules })).then((res) => {
             if (res?.error) {
                 window.lazytasksShowNotification?.({
-                    title: 'Performance',
-                    message: 'Failed to save rules',
+                    title: translate("Performance"),
+                    message: translate("Failed to save rules"),
                     color: 'red',
                     autoClose: 2000,
                 });
             } else {
                 window.lazytasksShowNotification?.({
-                    title: 'Performance',
-                    message: 'Rules updated successfully',
+                    title: translate("Performance"),
+                    message: translate("Rules updated successfully"),
                     color: 'green',
                     autoClose: 2000,
                 });
@@ -161,7 +162,7 @@ const PerformanceSettingsInner = () => {
     };
 
     const handleSync = async () => {
-        if (!window.confirm('Executing a manual synchronization will recalculate ALL gamification scores across your workspace from the beginning of time. Are you sure you want to proceed?')) {
+        if (!window.confirm(translate('Executing a manual synchronization will recalculate ALL gamification scores across your workspace from the beginning of time. Are you sure you want to proceed?'))) {
             return;
         }
 
@@ -174,8 +175,8 @@ const PerformanceSettingsInner = () => {
             isComplete = res.is_complete;
             if (isComplete) {
                 window.lazytasksShowNotification?.({
-                    title: 'Performance',
-                    message: 'Historical synchronization complete!',
+                    title: translate("Performance"),
+                    message: translate("Historical synchronization complete!"),
                     color: 'green',
                     autoClose: 3000,
                 });
@@ -185,18 +186,18 @@ const PerformanceSettingsInner = () => {
     };
 
     if (loading && localRules.length === 0) {
-        return <div style={{ padding: '32px 0', color: S.muted, fontSize: 14 }}>Loading...</div>;
+        return <div style={{ padding: '32px 0', color: S.muted, fontSize: 14 }}>{translate("Loading...")}</div>;
     }
 
     return (
         <>
             <SectionHeader
-                title="Performance & Gamification"
-                desc="Configure scoring rules, point values, and sync historical activity data."
+                title={translate("Performance & Gamification")}
+                desc={translate("Configure scoring rules, point values, and sync historical activity data.")}
                 actions={
                     <Btn variant="primary" onClick={saveRules} disabled={loading}>
                         <Icon d="M20 6 9 17 4 12" sw={2.5} size={14} />
-                        {loading ? 'Saving...' : 'Save Changes'}
+                        {loading ? translate('Saving...') : translate('Save Changes')}
                     </Btn>
                 }
             />
@@ -210,14 +211,14 @@ const PerformanceSettingsInner = () => {
                     </svg>
                     <div style={{ flex: 1 }}>
                         <div style={{ fontSize: 14, fontWeight: 600, color: S.amberTitle, marginBottom: 4 }}>
-                            Historical Data Available
+                            {translate("Historical Data Available")}
                         </div>
                         <div style={{ fontSize: 13, color: S.amberText, marginBottom: 12, lineHeight: 1.5 }}>
-                            Your installation has past activity logs. Sync them now to retroactively calculate your team's gamification scores based on the current rule weights!
+                            {translate("Your installation has past activity logs. Sync them now to retroactively calculate your team's gamification scores based on the current rule weights!")}
                         </div>
                         <Btn variant="teal" onClick={handleSync} disabled={syncing}>
                             <Icon d={<><path d="M21.5 2v6h-6"/><path d="M2.5 12a10 10 0 0 1 18.27-5.5L21.5 2"/><path d="M2.5 22v-6h6"/><path d="M21.5 12a10 10 0 0 1-18.27 5.5L2.5 22"/></>} size={14} />
-                            {syncing ? 'Synchronizing...' : 'Sync (or Re-Sync) Historical Data'}
+                            {syncing ? translate('Synchronizing...') : translate('Sync (or Re-Sync) Historical Data')}
                         </Btn>
                     </div>
                 </div>
@@ -226,7 +227,7 @@ const PerformanceSettingsInner = () => {
             {/* Scoring rules */}
             <Card>
                 <CardTitle icon={<><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></>}>
-                    Gamification Scoring Rules
+                    {translate("Gamification Scoring Rules")}
                 </CardTitle>
 
                 {localRules.map((rule, idx) => (
@@ -238,7 +239,7 @@ const PerformanceSettingsInner = () => {
                     >
                         <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
                             <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-                                <span style={{ fontSize: 12, fontWeight: 500, color: S.muted }}>Pts</span>
+                                <span style={{ fontSize: 12, fontWeight: 500, color: S.muted }}>{translate("Pts")}</span>
                                 <input
                                     type="number"
                                     value={rule.points}

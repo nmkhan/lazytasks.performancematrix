@@ -55,6 +55,23 @@ class TransStrings {
 
 			// Tooltip fragments (on scatterplot bubbles)
 			'Efficiency' => __( 'Efficiency', 'lazytasks-performance' ),
+
+			// Settings panel (PerformanceSettings.jsx)
+			'Performance'                         => __( 'Performance', 'lazytasks-performance' ),
+			'Failed to save rules'                => __( 'Failed to save rules', 'lazytasks-performance' ),
+			'Rules updated successfully'          => __( 'Rules updated successfully', 'lazytasks-performance' ),
+			'Executing a manual synchronization will recalculate ALL gamification scores across your workspace from the beginning of time. Are you sure you want to proceed?' => __( 'Executing a manual synchronization will recalculate ALL gamification scores across your workspace from the beginning of time. Are you sure you want to proceed?', 'lazytasks-performance' ),
+			'Historical synchronization complete!' => __( 'Historical synchronization complete!', 'lazytasks-performance' ),
+			'Loading...'                          => __( 'Loading...', 'lazytasks-performance' ),
+			'Configure scoring rules, point values, and sync historical activity data.' => __( 'Configure scoring rules, point values, and sync historical activity data.', 'lazytasks-performance' ),
+			'Saving...'                           => __( 'Saving...', 'lazytasks-performance' ),
+			'Save Changes'                        => __( 'Save Changes', 'lazytasks-performance' ),
+			'Historical Data Available'           => __( 'Historical Data Available', 'lazytasks-performance' ),
+			"Your installation has past activity logs. Sync them now to retroactively calculate your team's gamification scores based on the current rule weights!" => __( "Your installation has past activity logs. Sync them now to retroactively calculate your team's gamification scores based on the current rule weights!", 'lazytasks-performance' ),
+			'Synchronizing...'                    => __( 'Synchronizing...', 'lazytasks-performance' ),
+			'Sync (or Re-Sync) Historical Data'   => __( 'Sync (or Re-Sync) Historical Data', 'lazytasks-performance' ),
+			'Gamification Scoring Rules'          => __( 'Gamification Scoring Rules', 'lazytasks-performance' ),
+			'Pts'                                 => __( 'Pts', 'lazytasks-performance' ),
 		];
 	}
 }
