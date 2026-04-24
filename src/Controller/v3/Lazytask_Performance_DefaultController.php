@@ -33,33 +33,33 @@ class Lazytask_Performance_DefaultController {
 		$auth_header = $request->get_header( 'Authorization' );
 
 		if ( ! $auth_header ) {
-			return new WP_Error( 'jwt_auth_no_auth_header', 'Authorization header not found.', [ 'status' => 403 ] );
+			return new WP_Error( 'jwt_auth_no_auth_header', __('Authorization header not found.', 'lazytasks-performance'), [ 'status' => 403 ] );
 		}
 
 		[ $token ] = sscanf( $auth_header, 'Bearer %s' );
 
 		if ( ! $token ) {
-			return new WP_Error( 'jwt_auth_bad_auth_header', 'Authorization header is required.', [ 'status' => 403 ] );
+			return new WP_Error( 'jwt_auth_bad_auth_header', __('Authorization header is required.', 'lazytasks-performance'), [ 'status' => 403 ] );
 		}
 
 		$secret_key = defined( 'LAZYTASK_JWT_SECRET_KEY' ) ? LAZYTASK_JWT_SECRET_KEY : false;
 		if ( ! $secret_key ) {
-			return new WP_Error( 'jwt_auth_bad_config', 'JWT is not configured properly.', [ 'status' => 403 ] );
+			return new WP_Error( 'jwt_auth_bad_config', __('JWT is not configured properly.', 'lazytasks-performance'), [ 'status' => 403 ] );
 		}
 
 		try {
 			$decoded = JWT::decode( $token, new Key( LAZYTASK_JWT_SECRET_KEY, 'HS256' ) );
 
 			if ( $decoded->iss !== get_bloginfo( 'url' ) ) {
-				return new WP_Error( 'jwt_auth_bad_iss', 'The iss does not match this server.', [ 'status' => 403 ] );
+				return new WP_Error( 'jwt_auth_bad_iss', __('The iss does not match this server.', 'lazytasks-performance'), [ 'status' => 403 ] );
 			}
 
 			if ( ! isset( $decoded->data->user_id ) ) {
-				return new WP_Error( 'jwt_auth_bad_request', 'User ID not found in the token.', [ 'status' => 403 ] );
+				return new WP_Error( 'jwt_auth_bad_request', __('User ID not found in the token.', 'lazytasks-performance'), [ 'status' => 403 ] );
 			}
 
 			if ( time() > $decoded->exp ) {
-				return new WP_Error( 'jwt_auth_bad_request', 'Token has expired.', [ 'status' => 408 ] );
+				return new WP_Error( 'jwt_auth_bad_request', __('Token has expired.', 'lazytasks-performance'), [ 'status' => 408 ] );
 			}
 
 			return [

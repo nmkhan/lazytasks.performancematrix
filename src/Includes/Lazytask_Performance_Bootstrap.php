@@ -18,6 +18,15 @@ class Lazytask_Performance_Bootstrap {
 		$this->load_dependencies();
 		$this->define_admin_hooks();
 		$this->define_public_hooks();
+		add_action( 'plugins_loaded', [ $this, 'load_textdomain' ] );
+	}
+
+	public function load_textdomain() {
+		load_plugin_textdomain(
+			'lazytasks-performance',
+			false,
+			dirname( plugin_basename( LAZYTASK_PERFORMANCE_PATH . 'lazytasks-performance.php' ) ) . '/languages/'
+		);
 	}
 
 	private function load_dependencies() {

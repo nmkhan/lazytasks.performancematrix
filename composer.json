@@ -15,5 +15,9 @@
     "psr-4": {
       "Lazytask_Performance\\": "src/"
     }
+  },
+  "scripts": {
+    "make-pot":  "wp i18n make-pot . languages/lazytasks-performance.pot --domain=lazytasks-performance --exclude=admin/frontend/node_modules,admin/frontend/build,vendor",
+    "make-json": "wp i18n make-json languages/ --no-purge"
   }
 }

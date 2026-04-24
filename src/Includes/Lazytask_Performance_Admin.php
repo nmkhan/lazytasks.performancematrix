@@ -45,6 +45,12 @@ class Lazytask_Performance_Admin {
 			true
 		);
 
+		wp_set_script_translations(
+			'lazytasks-performance-script',
+			'lazytasks-performance',
+			LAZYTASK_PERFORMANCE_PATH . 'languages'
+		);
+
 		foreach ( array( 'style-index.css', 'index.css' ) as $css_file ) {
 			if ( file_exists( LAZYTASK_PERFORMANCE_PATH . 'admin/frontend/build/' . $css_file ) ) {
 				wp_enqueue_style(
@@ -61,6 +67,7 @@ class Lazytask_Performance_Admin {
 			'apiUrl'  => home_url( '/wp-json' ),
 			'homeUrl' => home_url( '' ),
 			'nonce'   => wp_create_nonce( 'wp_rest' ),
+			'i18n'    => \Lazytask_Performance\Services\TransStrings::getStrings(),
 		) );
 	}
 }

@@ -39,7 +39,7 @@ class Lazytask_PerformanceController extends Lazytask_Performance_DefaultControl
         $rules = isset($params['rules']) ? $params['rules'] : [];
 
         if (empty($rules) || !is_array($rules)) {
-            return new WP_Error('bad_request', 'Invalid rules payload', ['status' => 400]);
+            return new WP_Error('bad_request', __('Invalid rules payload', 'lazytasks-performance'), ['status' => 400]);
         }
 
         foreach ($rules as $rule) {
@@ -62,7 +62,7 @@ class Lazytask_PerformanceController extends Lazytask_Performance_DefaultControl
 
         return new WP_REST_Response([
             'status' => 200,
-            'message' => 'Rules updated successfully.'
+            'message' => __('Rules updated successfully.', 'lazytasks-performance')
         ], 200);
     }
 
@@ -86,7 +86,7 @@ class Lazytask_PerformanceController extends Lazytask_Performance_DefaultControl
 
 		return new WP_REST_Response( [
 			'status' => 200,
-			'message' => 'Rule points updated.'
+			'message' => __('Rule points updated.', 'lazytasks-performance')
 		], 200 );
 	}
 
@@ -259,7 +259,7 @@ class Lazytask_PerformanceController extends Lazytask_Performance_DefaultControl
     public function manual_trigger_cron(WP_REST_Request $request) {
         return new WP_REST_Response([
             'status' => 200,
-            'message' => 'Cron triggered successfully.'
+            'message' => __('Cron triggered successfully.', 'lazytasks-performance')
         ], 200);
     }
 }
