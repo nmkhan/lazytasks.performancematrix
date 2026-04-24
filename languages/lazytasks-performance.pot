@@ -1,0 +1,244 @@
+# Copyright (C) 2026 LazyTasks
+# This file is distributed under the GPL-3.0+.
+msgid ""
+msgstr ""
+"Project-Id-Version: LazyTasks Performance Scorer 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/lazytasks-performance\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-04-24T13:07:35+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.12.0\n"
+"X-Domain: lazytasks-performance\n"
+
+#. Plugin Name of the plugin
+#: lazytasks-performance.php
+msgid "LazyTasks Performance Scorer"
+msgstr ""
+
+#. Plugin URI of the plugin
+#: lazytasks-performance.php
+msgid "https://lazytasks.com"
+msgstr ""
+
+#. Description of the plugin
+#: lazytasks-performance.php
+msgid "Adds gamification, scoring, and performance analytics to LazyTasks via a nightly cron job over the activity log."
+msgstr ""
+
+#. Author of the plugin
+#: lazytasks-performance.php
+msgid "LazyTasks"
+msgstr ""
+
+#. Author URI of the plugin
+#: lazytasks-performance.php
+msgid "https://lazytasks.com/"
+msgstr ""
+
+#: lazytasks-performance.php:71
+msgid "LazyTasks Performance Scorer requires LazyTasks to be installed and active."
+msgstr ""
+
+#: src/Controller/v3/Lazytask_PerformanceController.php:42
+msgid "Invalid rules payload"
+msgstr ""
+
+#: src/Controller/v3/Lazytask_PerformanceController.php:65
+msgid "Rules updated successfully."
+msgstr ""
+
+#: src/Controller/v3/Lazytask_PerformanceController.php:89
+msgid "Rule points updated."
+msgstr ""
+
+#: src/Controller/v3/Lazytask_PerformanceController.php:262
+msgid "Cron triggered successfully."
+msgstr ""
+
+#: src/Controller/v3/Lazytask_Performance_DefaultController.php:36
+msgid "Authorization header not found."
+msgstr ""
+
+#: src/Controller/v3/Lazytask_Performance_DefaultController.php:42
+msgid "Authorization header is required."
+msgstr ""
+
+#: src/Controller/v3/Lazytask_Performance_DefaultController.php:47
+msgid "JWT is not configured properly."
+msgstr ""
+
+#: src/Controller/v3/Lazytask_Performance_DefaultController.php:54
+msgid "The iss does not match this server."
+msgstr ""
+
+#: src/Controller/v3/Lazytask_Performance_DefaultController.php:58
+msgid "User ID not found in the token."
+msgstr ""
+
+#: src/Controller/v3/Lazytask_Performance_DefaultController.php:62
+msgid "Token has expired."
+msgstr ""
+
+#: src/Services/TransStrings.php:21
+msgid "Performance & Gamification"
+msgstr ""
+
+#: src/Services/TransStrings.php:22
+msgid "Dashboard"
+msgstr ""
+
+#: src/Services/TransStrings.php:23
+msgid "Scoring Rules"
+msgstr ""
+
+#: src/Services/TransStrings.php:24
+msgid "Performance Dashboard"
+msgstr ""
+
+#: src/Services/TransStrings.php:25
+msgid "Workspace Overview"
+msgstr ""
+
+#: src/Services/TransStrings.php:26
+msgid "Company Leaderboard"
+msgstr ""
+
+#: src/Services/TransStrings.php:29
+msgid "All-Time"
+msgstr ""
+
+#: src/Services/TransStrings.php:30
+msgid "Last 30 Days"
+msgstr ""
+
+#: src/Services/TransStrings.php:31
+msgid "This Quarter"
+msgstr ""
+
+#: src/Services/TransStrings.php:32
+msgid "This Year"
+msgstr ""
+
+#: src/Services/TransStrings.php:35
+msgid "Top Scorer"
+msgstr ""
+
+#: src/Services/TransStrings.php:36
+msgid "Active Participants"
+msgstr ""
+
+#: src/Services/TransStrings.php:37
+msgid "Ranked Leaderboard"
+msgstr ""
+
+#: src/Services/TransStrings.php:38
+msgid "Workspace Avg"
+msgstr ""
+
+#: src/Services/TransStrings.php:39
+msgid "Total Points Earned"
+msgstr ""
+
+#: src/Services/TransStrings.php:40
+msgid "Avg Efficiency"
+msgstr ""
+
+#: src/Services/TransStrings.php:41
+msgid "Completed / Assigned"
+msgstr ""
+
+#: src/Services/TransStrings.php:44
+msgid "Workspace Engagement Matrix"
+msgstr ""
+
+#: src/Services/TransStrings.php:45
+msgid "Effectiveness (Points Earned)"
+msgstr ""
+
+#: src/Services/TransStrings.php:46
+msgid "Efficiency (Completion Rate %)"
+msgstr ""
+
+#: src/Services/TransStrings.php:47
+msgid "Top Performers"
+msgstr ""
+
+#: src/Services/TransStrings.php:50
+msgid "Loading Workspace Analytics..."
+msgstr ""
+
+#: src/Services/TransStrings.php:51
+msgid "No gameplay scores tracked yet. Create/Complete tasks to earn points!"
+msgstr ""
+
+#: src/Services/TransStrings.php:54
+msgid "Leaderboard"
+msgstr ""
+
+#: src/Services/TransStrings.php:57
+msgid "Efficiency"
+msgstr ""
+
+#: src/Services/TransStrings.php:60
+msgid "Performance"
+msgstr ""
+
+#: src/Services/TransStrings.php:61
+msgid "Failed to save rules"
+msgstr ""
+
+#: src/Services/TransStrings.php:62
+msgid "Rules updated successfully"
+msgstr ""
+
+#: src/Services/TransStrings.php:63
+msgid "Executing a manual synchronization will recalculate ALL gamification scores across your workspace from the beginning of time. Are you sure you want to proceed?"
+msgstr ""
+
+#: src/Services/TransStrings.php:64
+msgid "Historical synchronization complete!"
+msgstr ""
+
+#: src/Services/TransStrings.php:65
+msgid "Loading..."
+msgstr ""
+
+#: src/Services/TransStrings.php:66
+msgid "Configure scoring rules, point values, and sync historical activity data."
+msgstr ""
+
+#: src/Services/TransStrings.php:67
+msgid "Saving..."
+msgstr ""
+
+#: src/Services/TransStrings.php:68
+msgid "Save Changes"
+msgstr ""
+
+#: src/Services/TransStrings.php:69
+msgid "Historical Data Available"
+msgstr ""
+
+#: src/Services/TransStrings.php:70
+msgid "Your installation has past activity logs. Sync them now to retroactively calculate your team's gamification scores based on the current rule weights!"
+msgstr ""
+
+#: src/Services/TransStrings.php:71
+msgid "Synchronizing..."
+msgstr ""
+
+#: src/Services/TransStrings.php:72
+msgid "Sync (or Re-Sync) Historical Data"
+msgstr ""
+
+#: src/Services/TransStrings.php:73
+msgid "Gamification Scoring Rules"
+msgstr ""
+
+#: src/Services/TransStrings.php:74
+msgid "Pts"
+msgstr ""
